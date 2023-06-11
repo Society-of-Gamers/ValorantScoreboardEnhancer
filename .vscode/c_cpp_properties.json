@@ -1,0 +1,50 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceFolder}/**"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "intelliSenseMode": "windows-clang-x64",
+            "compileCommands": "${workspaceFolder}/build/compile_commands.json",
+            "configurationProvider": "ms-vscode.cmake-tools"
+        },
+        {
+            "name": "Default",
+            "includePath": [
+                "c:\\Users\\dev\\Documents\\Projects\\Tools\\Valorant\\scoreboard-enhancer/**",
+                "C:\\SFML-2.5.1\\include",
+                "C:\\msys64\\mingw64\\include",
+                "C:\\Program Files (x86)\\Windows Kits\\10\\Include"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "intelliSenseMode": "linux-gcc-x64",
+            "compilerPath": "C:/msys64/mingw64/bin/gcc.exe",
+            "cStandard": "c17",
+            "cppStandard": "c++17",
+            "configurationProvider": "ms-vscode.cmake-tools",
+            "forcedInclude": [],
+            "browse": {
+                "path": [
+                    "C:\\SFML-2.5.1\\include",
+                    "C:\\msys64\\clang64\\include",
+                    "C:\\Program Files (x86)\\Windows Kits\\10\\Include"
+                ],
+                "limitSymbolsToIncludedHeaders": true
+            },
+            "compilerPathInCppPropertiesJson": "C:/msys64/clang64/bin/gcc.exe",
+            "configurationProviderInCppPropertiesJson": "ms-vscode.cmake-tools",
+            "mergeConfigurations": false
+        }
+    ],
+    "version": 4
+}

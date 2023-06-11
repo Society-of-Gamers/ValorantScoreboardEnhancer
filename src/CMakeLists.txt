@@ -1,0 +1,5 @@
+add_executable(ValorantScoreboardEnhancerMain main.cpp)
+
+add_subdirectory(logger)
+
+target_link_libraries(ValorantScoreboardEnhancerMain Logger)
