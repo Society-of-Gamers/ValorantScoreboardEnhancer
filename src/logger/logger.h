@@ -2,9 +2,7 @@
 #include <array>
 #include <chrono>
 #include <ctime>
-#include <pthread.h>
 #include <stdint.h>
-#include <stdio.h>
 #include <string>
 #include <vector>
 #include <iomanip>
@@ -29,7 +27,7 @@ namespace LOGGER
     struct MessageBuffer
     {
         std::vector<Message> messages;
-        std::chrono::time_point<std::chrono::system_clock> addMessage(const Message &message);
+        std::chrono::time_point<std::chrono::system_clock> addMessage(Message message);
         uint64_t lastPrinted = 0;
         uint64_t size = 0;
     };
@@ -56,20 +54,20 @@ namespace LOGGER
         uint8_t activeMode;
         MessageBuffer m_messageBuffer;
 
-        pthread_t *m_thread;
         static Logger *c_Instance;
         Logger();
         ~Logger();
-        uint64_t writeBuffer(const MessageBuffer &buffer, const uint8_t &activeMode);
+        void writeBuffer(MessageBuffer *buffer, const uint8_t &activeMode, const uint64_t& length);
         static std::string getLevelName(const uint8_t &level);
         static void *m_printCycleInit(void *arg);
-        void *m_printCycle();
 
     protected:
         volatile bool m_isRunning = true;
     public:
-        const static uint8_t c_defaultFlags = static_cast<uint8_t>(LOGGER::LEVELS::FATAL) | static_cast<uint8_t>(LOGGER::FLAGS::DISPLAY);
+        const static uint8_t c_defaultFlags = LOGGER::FLAGS::DISPLAY; 
+        const static uint8_t c_defaultLevel = LOGGER::LEVELS::WARNING;
         static Logger *GetInstance();
-        bool log(const std::string message, const uint8_t flags = c_defaultFlags);
+        bool log(const std::string message, const LOGGER::LEVELS& levelFlag = LOGGER::LEVELS::INFO, const uint8_t& generalFlags = LOGGER::FLAGS::DISPLAY);
+        void print();
     };
 }
